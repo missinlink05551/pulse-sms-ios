@@ -13,6 +13,10 @@ class BlacklistTableViewCell : UITableViewCell {
     @IBOutlet weak var phoneNumber: UILabel!
     
     func bind(blacklist: Blacklist) {
-        self.phoneNumber.text = blacklist.phoneNumber
+        if blacklist.phoneNumber != nil && blacklist.phoneNumber != "" {
+            self.phoneNumber.text = blacklist.phoneNumber
+        } else {
+            self.phoneNumber.text = blacklist.phrase
+        }
     }
 }

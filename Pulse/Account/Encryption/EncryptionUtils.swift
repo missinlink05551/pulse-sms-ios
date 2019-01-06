@@ -41,8 +41,12 @@ class EncryptionUtils : ImageDownloaderDelegate {
         return data.toBase64()!
     }
     
-    func decrypt(data: String) -> String? {
-        if let decrypted = decryptData(data: data) {
+    func decrypt(data: String?) -> String? {
+        if data == nil {
+            return nil
+        }
+        
+        if let decrypted = decryptData(data: data!) {
             return String(data: Data(decrypted), encoding: .utf8)
         } else {
             return nil
