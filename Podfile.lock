@@ -1,5 +1,5 @@
 PODS:
-  - ActiveLabel (0.7.1)
+  - ActiveLabel (1.1.0)
   - Alamofire (4.6.0)
   - AsyncSwift (2.0.4)
   - CryptoSwift (0.8.1)
@@ -43,7 +43,7 @@ PODS:
   - TURecipientBar (2.3.1)
 
 DEPENDENCIES:
-  - ActiveLabel (from `https://github.com/optonaut/ActiveLabel.swift.git`, tag `0.8.0`)
+  - ActiveLabel (~> 1.1.0)
   - Alamofire (~> 4.5)
   - AsyncSwift (~> 2.0.4)
   - CryptoSwift (~> 0.8.0)
@@ -59,6 +59,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - ActiveLabel
     - Alamofire
     - AsyncSwift
     - CryptoSwift
@@ -77,18 +78,8 @@ SPEC REPOS:
     - SwiftyJSON
     - TURecipientBar
 
-EXTERNAL SOURCES:
-  ActiveLabel:
-    :git: https://github.com/optonaut/ActiveLabel.swift.git
-    :tag: 0.8.0
-
-CHECKOUT OPTIONS:
-  ActiveLabel:
-    :git: https://github.com/optonaut/ActiveLabel.swift.git
-    :tag: 0.8.0
-
 SPEC CHECKSUMS:
-  ActiveLabel: faa96b5f50507770536a3e48a4cf291ee88fb7db
+  ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   AsyncSwift: 65775a7b32e740609b24969ece3de58723b9dc3e
   CryptoSwift: 4b07d5b508c1eb67bfa314a727b705f8048a85de
@@ -107,6 +98,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   TURecipientBar: 0ad9573f75a21c964e86c900458c901250e0969b
 
-PODFILE CHECKSUM: df2dd380f7f08d0615e19fe3b97f9248935bcb68
+PODFILE CHECKSUM: 1cdb0727c20e528fc5887f21c3fd502c5271347c
 
 COCOAPODS: 1.9.1
