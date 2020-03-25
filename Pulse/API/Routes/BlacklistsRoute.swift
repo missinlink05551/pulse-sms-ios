@@ -33,7 +33,7 @@ class BlacklistsRoute : BaseRoute {
     
     func add(phoneNumber: String) -> Blacklist {
         let blacklist = Blacklist(id: DataProvider.generateId(), phoneNumber: phoneNumber, phrase: nil)
-        post(path: "/add", parameters: ["account_id": Account.accountId!, "device_id": blacklist.id, "phone_number": blacklist.phoneNumber])
+        post(path: "/add", parameters: ["account_id": Account.accountId!, "device_id": blacklist.id, "phone_number": blacklist.phoneNumber!])
         
         DataProvider.addBlacklist(blacklist: blacklist)
         return blacklist

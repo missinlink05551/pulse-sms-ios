@@ -18,7 +18,7 @@ public extension SLKTextViewController {
                 return activityIndicatorView
             } else {
                 let activityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-                activityIndicatorView.activityIndicatorViewStyle = .gray
+                activityIndicatorView.style = .gray
                 activityIndicatorView.color = .gray
                 activityIndicatorView.center = CGPoint(x:UIScreen.main.bounds.size.width / 2, y:UIScreen.main.bounds.size.height / 2)
                 activityIndicatorView.hidesWhenStopped = true

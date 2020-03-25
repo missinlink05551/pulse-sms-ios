@@ -27,9 +27,9 @@ class MessageTableViewController : SLKTextViewController {
         self.navigationController?.view.backgroundColor = UIColor.white
         
         self.tableView!.allowsSelection = false
-        self.tableView!.rowHeight = UITableViewAutomaticDimension
+        self.tableView!.rowHeight = UITableView.automaticDimension
         self.tableView!.separatorStyle = .none
-        self.tableView!.keyboardDismissMode = UIScrollViewKeyboardDismissMode.interactive;
+        self.tableView!.keyboardDismissMode = UIScrollView.KeyboardDismissMode.interactive;
         
         // Slack Text View Controller setup
         self.bounces = true
@@ -37,7 +37,7 @@ class MessageTableViewController : SLKTextViewController {
         self.isKeyboardPanningEnabled = true
         self.shouldScrollToBottomAfterKeyboardShows = false
         self.isInverted = true
-        self.rightButton.setTitle(NSLocalizedString("Send", comment: ""), for: UIControlState())
+        self.rightButton.setTitle(NSLocalizedString("Send", comment: ""), for: UIControl.State())
         self.textInputbar.autoHideRightButton = true
         self.textView.placeholder = "Type message...";
         self.textView.keyboardType = UIKeyboardType.default
@@ -102,8 +102,8 @@ class MessageTableViewController : SLKTextViewController {
         
         let message = PulseApi.messages().send(conversation: conversation!, message: self.textView.text, mimeType: MimeType.TEXT_PLAIN)
         let indexPath = IndexPath(row: 0, section: 0)
-        let rowAnimation: UITableViewRowAnimation = self.isInverted ? .bottom : .top
-        let scrollPosition: UITableViewScrollPosition = self.isInverted ? .bottom : .top
+        let rowAnimation: UITableView.RowAnimation = self.isInverted ? .bottom : .top
+        let scrollPosition: UITableView.ScrollPosition = self.isInverted ? .bottom : .top
         
         self.tableView!.beginUpdates()
         self.messages.insert(message, at: 0)
