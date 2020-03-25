@@ -18,7 +18,11 @@ class ConversationTableViewCell : UITableViewCell {
     
     func bind(conversation: Conversation) {
         self.title.text = conversation.title
+        self.title.textColor = UIColor(named: "ColorPrimaryText")
+        
         self.snippet.text = conversation.snippet
+        self.snippet.textColor = UIColor(named: "ColorSecondaryText")
+        
         self.imageLetter.text = "\(conversation.title.first!)"
         
         self.conversationImage.image = UIImage(color: UIColor(rgb: conversation.color))

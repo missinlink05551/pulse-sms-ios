@@ -16,10 +16,10 @@ class SentMessageTableViewCell : MessageTableViewCell {
     override func bind(conversation: Conversation, message: Message) {
         super.bind(conversation: conversation, message: message)
         
-        self.messageContainer.backgroundColor = UIColor.groupTableViewBackground
+        self.messageContainer.backgroundColor = UIColor(named: "ColorSentMessageBackground")
         
         self.message.text = message.data.trimmingCharacters(in: .whitespacesAndNewlines)
-        self.message.textColor = UIColor.black
+        self.message.textColor = UIColor(named: "ColorPrimaryText")
         self.createWebLinks(label: self.message, conversation: conversation)
     }
 }

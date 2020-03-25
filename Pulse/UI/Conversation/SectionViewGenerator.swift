@@ -20,12 +20,12 @@ class SectionViewGenerator {
     
     func generateSection(section: Int) -> UIView {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: self.controller.tableView.bounds.width, height: SectionViewGenerator.SECTION_HEADER_HEIGHT))
-        view.backgroundColor = UIColor(red: 242.0/255.0, green: 242.0/255.0, blue: 242.0/255.0, alpha: 1)
+        view.backgroundColor = UIColor(named: "ColorConversationSectionHeader")
         let label = UILabel(frame: CGRect(x: 15, y: 0, width: self.controller.tableView.bounds.width - 30, height: SectionViewGenerator.SECTION_HEADER_HEIGHT))
         
         label.text = getTitle(type: self.controller.sections[section].type)
         label.font = UIFont.boldSystemFont(ofSize: 12)
-        label.textColor = UIColor.black
+        label.textColor = UIColor(named: "ColorPrimaryText")
         
         view.addSubview(label)
         return view

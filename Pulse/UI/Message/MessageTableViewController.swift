@@ -40,6 +40,7 @@ class MessageTableViewController : SLKTextViewController {
         self.rightButton.setTitle(NSLocalizedString("Send", comment: ""), for: UIControl.State())
         self.textInputbar.autoHideRightButton = true
         self.textView.placeholder = "Type message...";
+        self.textView.font = .systemFont(ofSize: 17)
         self.textView.keyboardType = UIKeyboardType.default
         
         subscription = DataObserver.messages(conversation: conversation!, onNext: { messages in
