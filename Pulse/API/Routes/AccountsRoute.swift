@@ -15,7 +15,7 @@ class AccountsRoute : BaseRoute {
         super.init(route: "accounts")
     }
     
-    func login(email: String, password: String, completionHandler: @escaping (DataResponse<LoginResponse>) -> Void) {
+    func login(email: String, password: String, completionHandler: @escaping (LoginResponse) -> Void) {
         post(path: "/login", parameters: ["username": email, "password": password])
             .responseObject(completionHandler: completionHandler)
     }

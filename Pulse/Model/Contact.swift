@@ -20,14 +20,14 @@ struct Contact : ResponseObjectSerializable, ResponseCollectionSerializable, Cus
         return "Contact: { phone_number: \(phoneNumber), name: \(name), id_matcher: \(idMatcher), color: \(color) }"
     }
     
-    init?(response: HTTPURLResponse, representation: Any) {
+    init?(json: Any) {
         guard
-            let representation = representation as? [String: Any],
-            let id = representation["id"] as? Int64,
-            let phoneNumber = representation["phone_number"] as? String,
-            let name = representation["name"] as? String,
-            let idMatcher = representation["id_matcher"] as? String,
-            let color = representation["color"] as? Int
+            let json = json as? [String: Any],
+            let id = json["id"] as? Int64,
+            let phoneNumber = json["phone_number"] as? String,
+            let name = json["name"] as? String,
+            let idMatcher = json["id_matcher"] as? String,
+            let color = json["color"] as? Int
         else { return nil }
         
         self.id = id

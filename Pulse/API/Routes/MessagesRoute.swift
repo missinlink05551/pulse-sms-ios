@@ -20,11 +20,8 @@ class MessagesRoute : BaseRoute {
             return
         }
         
-        get(path: "", parameters: ["account_id": Account.accountId!, "conversation_id": conversationId, "web": true, "limit": 20]).responseCollection { (response: DataResponse<[Message]>) in
-            if let messageList = response.result.value {
-                completionHandler(messageList)
-            }
-        }
+        get(path: "", parameters: ["account_id": Account.accountId!, "conversation_id": conversationId, "web": true, "limit": 20])
+            .responseCollection(completionHandler: completionHandler)
     }
     
     func send(conversation: Conversation, message: String, mimeType: String) -> Message {

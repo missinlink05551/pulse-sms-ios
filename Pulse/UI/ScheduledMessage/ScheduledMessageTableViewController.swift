@@ -28,7 +28,7 @@ class ScheduledMessageTableViewController : UITableViewController {
         super.viewDidLoad()
         
         self.tableView.allowsSelection = false
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.separatorStyle = .none
         self.tableView.register(UINib(nibName: "ScheduledMessageTableViewCell", bundle: nil), forCellReuseIdentifier: "ScheduledMessageTableViewCell")
         

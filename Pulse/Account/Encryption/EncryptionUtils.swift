@@ -31,7 +31,7 @@ class EncryptionUtils : ImageDownloaderDelegate {
     func encryptData(data: [UInt8]) -> String {
         do {
             let iv = AES.randomIV(AES.blockSize)
-            let aes = try AES(key: key.base64Decoded()!, blockMode: .CBC(iv: iv), padding: .pkcs5)
+            let aes = try AES(key: key.base64Decoded()!, blockMode: CBC(iv: iv), padding: .pkcs5)
             let ciphertext = try aes.encrypt(data)
             return "\(iv.toBase64()!)\(SEPARATOR)\(ciphertext.toBase64()!)"
         } catch {
@@ -63,7 +63,7 @@ class EncryptionUtils : ImageDownloaderDelegate {
         let dataTwo = splitData[1].base64Decoded()
         
         do {
-            let aes = try AES(key: key.base64Decoded()!, blockMode: .CBC(iv: dataOne!), padding: .pkcs5)
+            let aes = try AES(key: key.base64Decoded()!, blockMode: CBC(iv: dataOne!), padding: .pkcs5)
             return try aes.decrypt(dataTwo!)
         } catch {
             debugPrint("Error decrypting.")

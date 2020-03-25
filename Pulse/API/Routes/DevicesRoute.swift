@@ -22,18 +22,14 @@ class DevicesRoute : BaseRoute {
             return
         }
         
-        let deviceType = Device().description
+        let deviceType = Device.current.description
         
         post(path: "/add", parameters: ["account_id": accountId!, "device": ["info": "Apple, \(deviceType)", "name": deviceType, "primary": false, "fcm_token": fcmToken!, "ios": true]])
-            .responseString { response in
-                if let json = response.result.value, let dataFromString = json.data(using: .utf8, allowLossyConversion: false) {
-                    do {
-                        let jsonObject = try JSON(data: dataFromString)
-                        let deviceId = jsonObject["id"].stringValue
-                        completionHandler(deviceId)
-                    } catch { }
-                }
-        }
+            .responseJSON { response in
+                let json = response.value as! [String: String]
+                let deviceId = json["id"]!
+                completionHandler(deviceId)
+            }
     }
     
     func updateFcmToken(fcmToken: String) {

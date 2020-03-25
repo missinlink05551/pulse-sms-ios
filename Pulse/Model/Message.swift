@@ -40,14 +40,14 @@ struct Message : ResponseObjectSerializable, ResponseCollectionSerializable, Cus
         self.sender = Message.getOptionalString(json: json, key: "message_from")
     }
     
-    init?(response: HTTPURLResponse, representation: Any) {
+    init?(json: Any) {
         guard
-            let representation = representation as? [String: Any],
-            let id = representation["device_id"] as? Int64,
-            let messageType = representation["message_type"] as? Int,
-            let data = representation["data"] as? String,
-            let mimeType = representation["mime_type"] as? String,
-            let timestamp = representation["timestamp"] as? Int64
+            let json = json as? [String: Any],
+            let id = json["device_id"] as? Int64,
+            let messageType = json["message_type"] as? Int,
+            let data = json["data"] as? String,
+            let mimeType = json["mime_type"] as? String,
+            let timestamp = json["timestamp"] as? Int64
         else { return nil }
         
         self.id = id
@@ -55,7 +55,7 @@ struct Message : ResponseObjectSerializable, ResponseCollectionSerializable, Cus
         self.data = Account.encryptionUtils?.decrypt(data: data) ?? ""
         self.mimeType = Account.encryptionUtils?.decrypt(data: mimeType) ?? "text/plain"
         self.timestamp = timestamp
-        self.sender = Message.getOptionalString(representation: representation, key: "message_from")
+        self.sender = Message.getOptionalString(representation: json, key: "message_from")
     }
     
     private static func getOptionalString(representation: [String: Any], key: String) -> String? {

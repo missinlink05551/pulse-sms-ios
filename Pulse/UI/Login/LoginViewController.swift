@@ -46,13 +46,8 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
             let password = self.password.text!
             
             login.setTitle("Verifying login...", for: .normal)
-            PulseApi.accounts().login(email: email, password: password) { (response: DataResponse<LoginResponse>) in
-                if let loginResponse = response.result.value {
-                    self.createAccount(loginResponse: loginResponse, password: self.password.text!)
-                } else {
-                    self.login.isEnabled = true
-                    self.login.setTitle("Incorrect login. Retry?", for: .normal)
-                }
+            PulseApi.accounts().login(email: email, password: password) { (response: LoginResponse) in
+                self.createAccount(loginResponse: response, password: self.password.text!)
             }
         }
     }

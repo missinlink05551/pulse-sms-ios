@@ -9,16 +9,16 @@
 import Alamofire
 
 protocol ResponseCollectionSerializable {
-    static func collection(from response: HTTPURLResponse, withRepresentation representation: Any) -> [Self]
+    static func collection(json: Any) -> [Self]
 }
 
 extension ResponseCollectionSerializable where Self: ResponseObjectSerializable {
-    static func collection(from response: HTTPURLResponse, withRepresentation representation: Any) -> [Self] {
+    static func collection(json: Any) -> [Self] {
         var collection: [Self] = []
         
-        if let representation = representation as? [[String: Any]] {
-            for itemRepresentation in representation {
-                if let item = Self(response: response, representation: itemRepresentation) {
+        if let json = json as? [[String: Any]] {
+            for itemJson in json {
+                if let item = Self(json: itemJson) {
                     collection.append(item)
                 }
             }

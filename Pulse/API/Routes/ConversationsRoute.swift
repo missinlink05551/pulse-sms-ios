@@ -21,9 +21,10 @@ class ConversationsRoute : BaseRoute {
         }
         
         get(path: "/latest_timestamp").responseString { response in
-            if let timestamp = response.result.value {
+            do {
+                let timestamp = try response.result.get()
                 completionHandler(Int64(timestamp)!)
-            }
+            } catch { }
         }
     }
     
@@ -32,11 +33,7 @@ class ConversationsRoute : BaseRoute {
             return
         }
         
-        get(path: "/index_unarchived", parameters: ["account_id": Account.accountId!, "limit": 100]).responseCollection { (response: DataResponse<[Conversation]>) in
-            if let conversations = response.result.value {
-                completionHandler(conversations)
-            }
-        }
+        get(path: "/index_unarchived", parameters: ["account_id": Account.accountId!, "limit": 100]).responseCollection(completionHandler: completionHandler)
     }
     
     func getArchived(completionHandler: @escaping ([Conversation]) -> Void) {
@@ -44,11 +41,7 @@ class ConversationsRoute : BaseRoute {
             return
         }
         
-        get(path: "/index_archived", parameters: ["account_id": Account.accountId!, "limit": 100]).responseCollection { (response: DataResponse<[Conversation]>) in
-            if let conversations = response.result.value {
-                completionHandler(conversations)
-            }
-        }
+        get(path: "/index_archived", parameters: ["account_id": Account.accountId!, "limit": 100]).responseCollection(completionHandler: completionHandler)
     }
     
     func updateSnippet(conversation: Conversation, snippet: String) {

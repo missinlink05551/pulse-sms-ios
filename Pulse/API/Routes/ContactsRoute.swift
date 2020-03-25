@@ -21,11 +21,7 @@ class ContactsRoute : BaseRoute {
         }
         
         get(path: "/simple", parameters: ["account_id": Account.accountId!, "limit": 500, "offset": offset])
-            .responseCollection { (response: DataResponse<[Contact]>) in
-                if let contacts = response.result.value {
-                    completionHandler(contacts)
-                }
-            }
+            .responseCollection(completionHandler: completionHandler)
     }
 }
 

@@ -24,14 +24,14 @@ struct Blacklist : ResponseObjectSerializable, ResponseCollectionSerializable, C
         self.phrase = phrase
     }
     
-    init?(response: HTTPURLResponse, representation: Any) {
+    init?(json: Any) {
         guard
-            let representation = representation as? [String: Any],
-            let id = representation["device_id"] as? Int64
+            let json = json as? [String: Any],
+            let id = json["device_id"] as? Int64
         else { return nil }
         
-        let phoneNumber = Blacklist.getOptionalString(representation: representation, key: "phone_number")
-        let phrase = Blacklist.getOptionalString(representation: representation, key: "phrase")
+        let phoneNumber = Blacklist.getOptionalString(representation: json, key: "phone_number")
+        let phrase = Blacklist.getOptionalString(representation: json, key: "phrase")
         
         self.id = id
         self.phoneNumber = phoneNumber ?? ""

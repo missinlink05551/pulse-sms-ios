@@ -25,19 +25,19 @@ struct Conversation : ResponseObjectSerializable, ResponseCollectionSerializable
         return "Conversation: { title: \(title), snippet: \(snippet), timestamp: \(timestamp) }"
     }
     
-    init?(response: HTTPURLResponse, representation: Any) {
+    init?(json: Any) {
         guard
-            let representation = representation as? [String: Any],
-            let id = representation["device_id"] as? Int64,
-            let title = representation["title"] as? String,
-            let phoneNumbers = representation["phone_numbers"] as? String,
-            let snippet = representation["snippet"] as? String,
-            let timestamp = representation["timestamp"] as? Int64,
-            let read = representation["read"] as? Bool,
-            let pinned = representation["pinned"] as? Bool,
-            let color = representation["color"] as? Int,
-            let colorDark = representation["color_dark"] as? Int,
-            let colorAccent = representation["color_accent"] as? Int
+            let json = json as? [String: Any],
+            let id = json["device_id"] as? Int64,
+            let title = json["title"] as? String,
+            let phoneNumbers = json["phone_numbers"] as? String,
+            let snippet = json["snippet"] as? String,
+            let timestamp = json["timestamp"] as? Int64,
+            let read = json["read"] as? Bool,
+            let pinned = json["pinned"] as? Bool,
+            let color = json["color"] as? Int,
+            let colorDark = json["color_dark"] as? Int,
+            let colorAccent = json["color_accent"] as? Int
         else { return nil }
         
         self.id = id

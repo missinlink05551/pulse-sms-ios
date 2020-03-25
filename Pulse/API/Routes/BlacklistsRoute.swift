@@ -20,11 +20,7 @@ class BlacklistsRoute : BaseRoute {
             return
         }
         
-        get(path: "").responseCollection { (response: DataResponse<[Blacklist]>) in
-            if let blacklists = response.result.value {
-                completionHandler(blacklists)
-            }
-        }
+        get(path: "").responseCollection(completionHandler: completionHandler)
     }
     
     func delete(blacklist: Blacklist) {

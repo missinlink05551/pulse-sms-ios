@@ -95,7 +95,7 @@ class _FcmHandler {
         let notification = UNMutableNotificationContent()
         notification.title = title
         notification.body = snippet
-        notification.sound = UNNotificationSound.default()
+        notification.sound = UNNotificationSound.default
         
         let identifier = json["conversation_id"].stringValue
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)

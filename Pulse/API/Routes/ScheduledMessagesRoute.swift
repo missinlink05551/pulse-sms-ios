@@ -20,11 +20,7 @@ class ScheduledMessagesRoute : BaseRoute {
             return
         }
         
-        get(path: "").responseCollection { (response: DataResponse<[ScheduledMessage]>) in
-            if let messages = response.result.value {
-                completionHandler(messages)
-            }
-        }
+        get(path: "").responseCollection(completionHandler: completionHandler)
     }
     
     func delete(message: ScheduledMessage) {

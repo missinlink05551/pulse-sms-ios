@@ -17,10 +17,10 @@ class BaseRoute {
     }
     
     @discardableResult func get(path: String, parameters: Parameters = ["account_id": Account.accountId!]) -> DataRequest {
-        return Alamofire.request("\(baseUrl)\(path)", method: .get, parameters: parameters)
+        return AF.request("\(baseUrl)\(path)", method: .get, parameters: parameters)
     }
     
     @discardableResult func post(path: String, parameters: Parameters = ["account_id": Account.accountId!]) -> DataRequest {
-        return Alamofire.request("\(baseUrl)\(path)", method: .post, parameters: parameters)
+        return AF.request("\(baseUrl)\(path)", method: .post, parameters: parameters)
     }
 }

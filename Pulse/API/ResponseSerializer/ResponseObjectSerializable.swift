@@ -9,5 +9,5 @@
 import Alamofire
 
 protocol ResponseObjectSerializable {
-    init?(response: HTTPURLResponse, representation: Any)
+    init?(json: Any)
 }

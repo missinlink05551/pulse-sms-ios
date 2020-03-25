@@ -19,14 +19,14 @@ struct LoginResponse : ResponseObjectSerializable, CustomStringConvertible {
         return "LoginResponse: { account_id: \(accountId), name: \(name), number: \(number), salts: [\(salt1), \(salt2)] }"
     }
     
-    init?(response: HTTPURLResponse, representation: Any) {
+    init?(json: Any) {
         guard
-            let representation = representation as? [String: Any],
-            let accountId = representation["account_id"] as? String,
-            let name = representation["name"] as? String,
-            let number = representation["phone_number"] as? String,
-            let salt1 = representation["salt1"] as? String,
-            let salt2 = representation["salt2"] as? String
+            let json = json as? [String: Any],
+            let accountId = json["account_id"] as? String,
+            let name = json["name"] as? String,
+            let number = json["phone_number"] as? String,
+            let salt1 = json["salt1"] as? String,
+            let salt2 = json["salt2"] as? String
         else { return nil }
         
         self.accountId = accountId
